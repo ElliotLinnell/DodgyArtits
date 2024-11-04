@@ -272,6 +272,61 @@ span {
     body {
         font-size: 16px;
     }
+    header {
+        font-size: 16px;
+    }
+    nav {
+        font-size: 16px;
+    }
+    section {
+        font-size: 16px;
+    }
+    footer {
+        font-size: 16px;
+    }
+    .content {
+        font-size: 16px;
+    }
+    .products, .cart {
+        font-size: 16px;
+    }
+    .product {
+        font-size: 16px;
+    }
+    .product h3 {
+        font-size: 16px;
+    }
+    button {
+        font-size: 16px;
+    }
+    #cart-items div {
+        font-size: 16px;
+    }
+    li {
+        font-size: 16px;
+    }
+    ul {
+        font-size: 16px;
+    }
+    .modal {
+        font-size: 16px;
+    }
+    .modal .close {
+        font-size: 16px;
+    }
+    .modal-content {
+        font-size: 16px;
+    }
+    .slideshow-container {
+        font-size: 16px;
+    }
+    .slides {
+        font-size: 16px;
+    }
+    .fade {
+        font-size: 16px;
+    }
+
 }
 
 /* Tablets */
@@ -279,6 +334,61 @@ span {
     body {
         font-size: 14px;
     }
+    header {
+        font-size: 14px;
+    }
+    nav {
+        font-size: 14px;
+    }
+    section {
+        font-size: 14px;
+    }
+    footer {
+        font-size: 14px;
+    }
+    .content {
+        font-size: 14px;
+    }
+    .products, .cart {
+        font-size: 14px;
+    }
+    .product {
+        font-size: 14px;
+    }
+    .product h3 {
+        font-size: 14px;
+    }
+    button {
+        font-size: 14px;
+    }
+    #cart-items div {
+        font-size: 14px;
+    }
+    li {
+        font-size: 14px;
+    }
+    ul {
+        font-size: 14px;
+    }
+    .modal {
+        font-size: 14px;
+    }
+    .modal .close {
+        font-size: 14px;
+    }
+    .modal-content {
+        font-size: 14px;
+    }
+    .slideshow-container {
+        font-size: 14px;
+    }
+    .slides {
+        font-size: 14px;
+    }
+    .fade {
+        font-size: 14px;
+    }
+    
 }
 
 /* Mobile phones */
@@ -286,6 +396,61 @@ span {
     body {
         font-size: 12px;
     }
+    header {
+        font-size: 12px;
+    }
+    nav {
+        font-size: 12px;
+    }
+    section {
+        font-size: 12px;
+    }
+    footer {
+        font-size: 12px;
+    }
+    .content {
+        font-size: 12px;
+    }
+    .products, .cart {
+        font-size: 12px;
+    }
+    .product {
+        font-size: 12px;
+    }
+    .product h3 {
+        font-size: 12px;
+    }
+    button {
+        font-size: 12px;
+    }
+    #cart-items div {
+        font-size: 12px;
+    }
+    li {
+        font-size: 12px;
+    }
+    ul {
+        font-size: 12px;
+    }
+    .modal {
+        font-size: 12px;
+    }
+    .modal .close {
+        font-size: 12px;
+    }
+    .modal-content {
+        font-size: 12px;
+    }
+    .slideshow-container {
+        font-size: 12px;
+    }
+    .slides {
+        font-size: 12px;
+    }
+    .fade {
+        font-size: 12px;
+    }
+
 }
 /* Latops */
 @media (max-width: 1920px) {
