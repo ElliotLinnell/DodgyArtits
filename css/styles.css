@@ -1,0 +1,295 @@
+body {
+    @font-face {
+        font-family: 'Helvetica . Black Oblique';
+        src: url(Helvetica .Black Oblique.otf);
+    }
+    font-family: 'Helvetica . Black Oblique';
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #3c3c3c;
+    color: #fffcfc;
+    padding: 15px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 60px;
+}
+
+nav {
+    margin: 0;
+    background-color: rgba(110, 110, 110, 0.8);
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #007BFF;
+}
+
+section {
+    padding: 20px;
+}
+
+.container {
+    padding: 40px 0;
+}
+
+footer {
+    background-color: #3c3c3c;
+    color: #ffffff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+#home{
+    background-image: url("../images/index.jpg");
+    background-size: cover;
+    background-position: center;
+    scroll-behavior: auto;
+    scrollbar-color: #ffffff;
+
+}
+
+.content {
+    background-color: rgba(110, 110, 110, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: large;
+}
+
+.products, .cart {
+    margin: 2em auto;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.products h2, .cart h2 {
+    color: #333;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#music{
+    background-image: url("../images/music.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+}
+
+.product h3 {
+    margin: 0;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#cart-items div {
+    margin: 0.5em 0;
+}
+
+li {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modal-content {
+    margin: 20px 0;
+}
+
+.slideshow-container {
+    position: relative;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: none;
+    height: auto;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: .4 }
+    to { opacity: 1 }
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: flex;
+    top: 50%;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.music-list {
+    color: #000000;
+}
+#dates {
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    display: block;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+
+}
+span {
+    color: #007BFF;
+    padding: 2px;
+}
+#about{
+    background-image: url("../images/about.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.background-video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: fill-available;
+    height: fill-available;
+    background-size: fill-available;
+    background-position: center;
+    opacity: 0.5;
+ }
+ .tour{
+    text-align: center;
+    font-size: x-large;
+    color: #ffffff;
+ }
+ .music{
+    color: #ffffff;
+    background: none;
+    display: square;
+    align-content: left;
+    justify-content: left;
+    align-items: left; ;
+ }
+ .music-list{
+    color: #ffffff;
+    background: rgba(110, 110, 110, 0.8);
+    display: square;
+    align-content: left;
+    justify-content: left;
+    align-items: left; ;
+ }
+ /* Large screens */
+@media (min-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 767px) {
+    body {
+        font-size: 12px;
+    }
+}
+/* Latops */
+@media (max-width: 1920px) {
+    body {
+        font-size: 16px;
+    }
+}

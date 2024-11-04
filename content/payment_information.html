@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Information</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <style>
+        body {
+            font-family: 'Helvetica Black Oblique', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Payment Information</h1>
+    </header>
+    <div class="container">
+        <form action="submit_payment.php" method="post">
+            <h2>Contact Details</h2>
+            <input type="text" name="full_name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+
+            <h2>Address</h2>
+            <input type="text" name="address_line1" placeholder="Address Line 1" required>
+            <input type="text" name="address_line2" placeholder="Address Line 2">
+            <input type="text" name="city" placeholder="City" required>
+            <input type="text" name="county" placeholder="county" required>
+            <input type="text" name="postal_code" placeholder="Postal Code" required>
+            <input type="text" name="country" placeholder="Country" required>
+
+            <h2>Payment Information</h2>
+            <input type="text" name="card_number" placeholder="Credit Card Number" required>
+            <input type="text" name="card_expiry" placeholder="Expiry Date (MM/YY)" required>
+            <input type="text" name="card_cvc" placeholder="CVC" required>
+
+            <button type="submit">Submit Payment</button>
+        </form>
+    </div>
+</body>
+</html>
