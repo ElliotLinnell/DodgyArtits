@@ -392,15 +392,17 @@ span {
 }
 
 /* Mobile phones */
-@media (max-width: 767px) {
+@media (max-width: 600px) {
     body {
         font-size: 12px;
+        width: 100%;
     }
     header {
         font-size: 12px;
     }
     nav {
         font-size: 12px;
+        flex-flow: column;
     }
     section {
         font-size: 12px;
@@ -457,4 +459,25 @@ span {
     body {
         font-size: 16px;
     }
+}
+.nav-link:hover {
+    font-weight: bold;
+    color: gray; /* Add an accent color */
+}
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.cta-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-block;
+}
+.cta-button:hover {
+    background-color: #e65c00;
 }

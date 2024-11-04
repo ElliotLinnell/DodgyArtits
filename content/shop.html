@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 <head>
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <title>Oasis Store</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Link to your CSS file -->
 </head>
+
 <body>
     <header>
         <h1>Oasis Store</h1>
     </header>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="music.html">Music</a>
-            <a href="dates.html">Tour Dates</a>
-            <a href="book.html">Book Tickets</a>
-            <a href="shop.html">Store</a>
-            <a href="about.html">About Us</a>
-        </nav>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="music.html">Music</a>
+        <a href="dates.html">Tour Dates</a>
+        <a href="book.html">Book Tickets</a>
+        <a href="shop.html">Store</a>
+        <a href="about.html">About Us</a>
+    </nav>
 
     <section class="slideshow-container">
         <div class="slides fade">
-            <img src="../images/shirt.jpg" alt="oasis promotional t-shirt">
+            <img src="../images/shirt.jpg" alt="Oasis promotional t-shirt">
         </div>
         <div class="slides fade">
             <img src="../images/poster1.jpg" alt="Oasis 2025 tour poster">
         </div>
         <div class="slides fade">
-            <img src="../images/mug.jpg" alt="oasis promotional mug">
+            <img src="../images/mug.jpg" alt="Oasis promotional mug">
         </div>
         <div class="slides fade">
-            <img src="../images/poster2.jpg" alt="oasis promotional poster">
+            <img src="../images/poster2.jpg" alt="Oasis promotional poster">
         </div>
         <div class="slides fade">
             <img src="../images/poster3.jpg" alt="Oasis album poster">
@@ -63,15 +64,15 @@
                 </div>
             </div>
         </div>
-        <div class="product" data-id="3">
+        <div class="product" data-id="2">
             <h3>Mug</h3>
             <p>£15.00</p>
-            <button onclick="addToCart(3, event)">Add to Cart</button>
+            <button onclick="addToCart(2, event)">Add to Cart</button>
         </div>
-        <div class="product" data-id="4">
+        <div class="product" data-id="3">
             <h3>Poster</h3>
             <p>£10.00</p>
-            <button onclick="addToCart(4, event)">Add to Cart</button>
+            <button onclick="addToCart(3, event)">Add to Cart</button>
             <div id="posterModal" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeModal('posterModal')">&times;</span>
@@ -91,13 +92,8 @@
         <div id="cart-items"></div>
         <button onclick="clearCart()">Clear Cart</button>
         <button onclick="purchase()">Purchase</button>
-        <div id="cart-Total"></div>
+        <div id="cart-total"></div>
     </section>
-    <pre>
-
-
-
-    </pre>
 
     <script src="../js/scripts.js"></script>
 
