@@ -65,6 +65,11 @@ footer {
     scrollbar-color: #ffffff;
     background-attachment: fixed;
 }
+.home-image {
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+}
 
 .content {
     background-color: rgba(110, 110, 110, 0.8);
@@ -223,6 +228,8 @@ ul {
     margin: 0 auto;
     background-size: cover;
     background-position: center;
+    height: 100%;
+    background-attachment: fixed;
 
 }
 span {
@@ -234,6 +241,8 @@ span {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-color: #ffffff;
+    height: 100%;
 }
 .background-video {
     position: absolute;
@@ -400,13 +409,17 @@ span {
         width: 100%;
     }
     .background-video {
-        display: fill-available;
+        display: none;
+        background-attachment: fixed;
     }
     .home-image {
         background-size: auto;
         max-width: 100%;
         height: auto;
         object-fit: contain;
+    }
+    nav {
+        flex-flow: column;
     }
 }
 
