@@ -1,7 +1,7 @@
 body {
     @font-face {
         font-family: 'Helvetica . Black Oblique';
-        src: url(Helvetica .Black Oblique.otf);
+        src: url(../fonts/Helvetica .Black Oblique.otf);
     }
     font-family: 'Helvetica . Black Oblique';
     margin: 0;
@@ -245,6 +245,7 @@ span {
     height: fill-available;
     background-size: fill-available;
     background-position: center;
+    background-attachment: fixed;
     opacity: 0.5;
  }
  .tour{
@@ -398,72 +399,31 @@ span {
         font-size: 12px;
         width: 100%;
     }
-    header {
-        font-size: 12px;
+    .background-video {
+        display: fill-available;
     }
-    nav {
-        font-size: 12px;
-        flex-flow: column;
+    .home-image {
+        background-size: auto;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
     }
-    section {
-        font-size: 12px;
-    }
-    footer {
-        font-size: 12px;
-    }
-    .content {
-        font-size: 12px;
-    }
-    .products, .cart {
-        font-size: 12px;
-    }
-    .product {
-        font-size: 12px;
-    }
-    .product h3 {
-        font-size: 12px;
-    }
-    button {
-        font-size: 12px;
-    }
-    #cart-items div {
-        font-size: 12px;
-    }
-    li {
-        font-size: 12px;
-    }
-    ul {
-        font-size: 12px;
-    }
-    .modal {
-        font-size: 12px;
-    }
-    .modal .close {
-        font-size: 12px;
-    }
-    .modal-content {
-        font-size: 12px;
-    }
-    .slideshow-container {
-        font-size: 12px;
-    }
-    .slides {
-        font-size: 12px;
-    }
-    .fade {
-        font-size: 12px;
-    }
-
 }
-/* Latops */
+
+/* Laptops */
 @media (max-width: 1920px) {
     body {
         font-size: 16px;
     }
+    .home-image {
+        max-width: 300px; 
+        height: auto;
+        object-fit: contain;
+    }
 }
 .nav-link:hover {
     font-weight: bold;
-    color: gray; /* Add an accent color */
+    color: gray; 
 }
 .active {
     font-weight: bold;
