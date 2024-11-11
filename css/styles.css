@@ -278,8 +278,12 @@ span {
     justify-content: left;
     align-items: left; ;
  }
- .book {
+ #book {
     background-image: url("../images/book.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
  }
  /* Large screens */
 @media (min-width: 1024px) {
