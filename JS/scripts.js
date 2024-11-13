@@ -1,3 +1,6 @@
+import { react } from "react";
+import { render } from "react-dom";
+
 let cart = [];
 let slideIndex = 0;
 let slides = document.getElementsByClassName("slides");
