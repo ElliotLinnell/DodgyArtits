@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oasis Store</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Link to your CSS file -->
 </head>
+
 <body>
     <header>
         <h1>Oasis Store</h1>
@@ -22,13 +23,89 @@
         <a href="about.html">About Us</a>
     </nav>
 
+    <section class="slideshow-container">
+        <div class="slides fade">
+            <img src="../images/shirt.jpg" alt="Oasis promotional t-shirt">
+        </div>
+        <div class="slides fade">
+            <img src="../images/poster1.jpg" alt="Oasis 2025 tour poster">
+        </div>
+        <div class="slides fade">
+            <img src="../images/mug.jpg" alt="Oasis promotional mug">
+        </div>
+        <div class="slides fade">
+            <img src="../images/poster2.jpg" alt="Oasis promotional poster">
+        </div>
+        <div class="slides fade">
+            <img src="../images/poster3.jpg" alt="Oasis album poster">
+        </div>
+    </section>
+    <div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
 
-    <div id="root"></div>
+    <section class="products">
+        <h2>Merchandise</h2>
+        <div class="product" data-id="1">
+            <h3>T-Shirt</h3>
+            <p>£20.00</p>
+            <button onclick="addToCart(1, event)">Add to Cart</button>
+            <div id="sizeModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('sizeModal')">&times;</span>
+                    <h2>Select a Size</h2>
+                    <div class="modal-buttons">
+                        <button onclick="selectSize('S')">Small</button>
+                        <button onclick="selectSize('M')">Medium</button>
+                        <button onclick="selectSize('L')">Large</button>
+                        <button onclick="selectSize('XL')">Extra Large</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product" data-id="2">
+            <h3>Mug</h3>
+            <p>£15.00</p>
+            <button onclick="addToCart(2, event)">Add to Cart</button>
+        </div>
+        <div class="product" data-id="3">
+            <h3>Poster</h3>
+            <p>£10.00</p>
+            <button onclick="addToCart(3, event)">Add to Cart</button>
+            <div id="posterModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('posterModal')">&times;</span>
+                    <h2>Select a Poster</h2>
+                    <div class="modal-buttons">
+                        <button onclick="selectPoster(1)">Poster 1</button>
+                        <button onclick="selectPoster(2)">Poster 2</button>
+                        <button onclick="selectPoster(3)">Poster 3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="purchase()">Purchase</button>
+        <div id="cart-total"></div>
+    </section>
+    <pre>
+
+
+
+
+
+    </pre>
+
+    <script src="../js/scripts.js"></script>
 
     <footer>
         <p>&copy; 2024 Dodgy Artists</p>
     </footer>
-
-    <script src="../js/scripts.js"></script>
 </body>
 </html>
