@@ -190,3 +190,4 @@ class shoppingCart extends React.Component {
         );
     }
 }
+render(<shoppingCart />, document.getElementById('root'));
