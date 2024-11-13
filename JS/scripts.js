@@ -177,3 +177,16 @@ document.addEventListener("DOMContentLoaded", function() {
 function book() {
     window.location.href = 'book.html';
 }
+class shoppingCart extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>Shopping Cart</h1>
+                <div id="cart-items"></div>
+                <div id="cart-total"></div>
+                <button onClick={purchase}>Purchase</button>
+                <button onClick={clearCart}>Clear Cart</button>
+            </div>
+        );
+    }
+}
