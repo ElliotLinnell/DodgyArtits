@@ -1,179 +1,116 @@
-import { react } from "react";
-import { render } from "react-dom";
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import '../css/App.css';
 
-let cart = [];
-let slideIndex = 0;
-let slides = document.getElementsByClassName("slides");
-let slideTimeout;
+const Slideshow = () => {
+    const slides = [
+        { src: '../images/shirt.jpg', alt: 'Oasis promotional t-shirt' },
+        { src: '../images/poster1.jpg', alt: 'Oasis 2025 tour poster' },
+        { src: '../images/mug.jpg', alt: 'Oasis promotional mug' },
+        { src: '../images/poster2.jpg', alt: 'Oasis promotional poster' },
+        { src: '../images/poster3.jpg', alt: 'Oasis album poster' }
+    ];
+    const [slideIndex, setSlideIndex] = useState(0);
 
-function loadCart() {
-    const storedCart = localStorage.getItem('cart');
-    if (storedCart) {
-        cart = JSON.parse(storedCart);
-        updateCart();
-    }
-}
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
+        }, 2000);
+        return () => clearInterval(timer);
+    }, [slides.length]);
 
-function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
+    return (
+        <div className="slideshow-container">
+            {slides.map((slide, index) => (
+                <div
+                    key={index}
+                    className="slides fade"
+                    style={{ display: index === slideIndex ? 'block' : 'none' }}
+                >
+                    <img src={slide.src} alt={slide.alt} />
+                </div>
+            ))}
+            <button className="prev" onClick={() => setSlideIndex((slideIndex - 1 + slides.length) % slides.length)}>&#10094;</button>
+            <button className="next" onClick={() => setSlideIndex((slideIndex + 1) % slides.length)}>&#10095;</button>
+        </div>
+    );
+};
 
-function addToCart(productId, event) {
-    const button = event.target;
-    const buttonRect = button.getBoundingClientRect();
-    
-    if (productId === 1) {
-        openModal('sizeModal', buttonRect);
-    } else if (productId === 4) {
-        openModal('posterModal', buttonRect);
-    } else {
-        const product = document.querySelector(`.product[data-id="${productId}"]`);
-        const productName = product.querySelector('h3').innerText;
-        const productPrice = parseFloat(product.querySelector('p').innerText.replace('£', ''));
-        addProductToCart(productId, productName, productPrice, null);
-    }
-}
+const Product = ({ product, addToCart }) => (
+    <div className="product" data-id={product.id}>
+        <h3>{product.name}</h3>
+        <p>£{product.price.toFixed(2)}</p>
+        <button onClick={() => addToCart(product.id)}>Add to Cart</button>
+    </div>
+);
 
-function addProductToCart(productId, name, price, size, posterId) {
-    const uniqueKey = `${productId}-${size || 'default'}`;
-    const existingProduct = cart.find(item => item.uniqueKey === uniqueKey);
+const Cart = ({ cartItems, removeFromCart, clearCart }) => (
+    <section className="cart">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items">
+            {cartItems.map((item, index) => (
+                <div key={index} className="cart-item">
+                    <p>{item.name} - £{item.price.toFixed(2)} (x{item.quantity})</p>
+                    <button onClick={() => removeFromCart(index)}>Remove</button>
+                </div>
+            ))}
+        </div>
+        <div id="cart-total">Total: £{cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</div>
+        <button onClick={clearCart}>Clear Cart</button>
+    </section>
+);
 
-    if (existingProduct) {
-        existingProduct.quantity += 1;
-    } else {
-        cart.push({ id: productId, name, price, size, posterId, quantity: 1, uniqueKey });
-    }
+const App = () => {
+    const [cart, setCart] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
-    saveCart();
-    updateCart();
-}
+    useEffect(() => {
+        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        setCart(storedCart);
+    }, []);
 
-function selectSize(size) {
-    const product = document.querySelector('.product[data-id="1"]');
-    const productName = `${product.querySelector('h3').innerText} - Size: ${size}`;
-    const productPrice = product.querySelector('p').innerText;
-    addProductToCart(1, productName, productPrice, size);
-    closeModal('sizeModal');
-}
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
 
-
-function selectPoster(posterId) {
-    const product = document.querySelector('.product[data-id="4"]');
-    const productName = `${product.querySelector('h3').innerText} - Poster ${posterId}`;
-    const productPrice = product.querySelector('p').innerText;
-    addProductToCart(4, productName, productPrice, posterId);
-    closeModal('posterModal');
-}
-
-function updateCart() {
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    cartItems.innerHTML = '';
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.innerText = `${item.name} - ${item.price} (x${item.quantity}) `;
-        const removeButton = document.createElement('button');
-        removeButton.innerText = 'Remove';
-        removeButton.onclick = () => removeFromCart(index);
-        cartItem.appendChild(removeButton);
-        cartItems.appendChild(cartItem);
-    });
-    cartTotal.innerText = `Total: £${cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}`;
-}
-
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    saveCart();
-    updateCart();
-}
-
-function clearCart() {
-    cart = [];
-    saveCart();
-    updateCart();
-}
-
-function purchase() {
-    window.location.href = 'payment_information.html';
-}
-
-function showSlides() {
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    
-    slideIndex++;
-    if (slideIndex > slides.length) { 
-        slideIndex = 1; 
-    }
-    
-    slides[slideIndex - 1].style.display = "block";
-    
-    slideTimeout = setTimeout(showSlides, 2000);
-    autoplay="true";
-}
-
-function plusSlides(n) {
-    slideIndex += n;
-
-    if (slideIndex > slides.length) { 
-        slideIndex = 1; 
-    }
-    if (slideIndex < 1) { 
-        slideIndex = slides.length; 
-    }
-
-    clearTimeout(slideTimeout);
-
-    showCurrentSlide();
-
-    slideTimeout = setTimeout(showSlides, 2000);
-}
-
-function showCurrentSlide() {
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[slideIndex - 1].style.display = "block";
-}
-
-function openModal(modalId, buttonRect) {
-    const modal = document.getElementById(modalId);
-    modal.style.display = "block";
-    modal.style.position = "absolute";
-    modal.style.left = `${buttonRect.left}px`;
-    modal.style.top = `${buttonRect.bottom + window.scrollY}px`;
-    modal.style.maxWidth = "300px";
-    modal.style.maxHeight = "150px";
-
-    const modalRect = modal.getBoundingClientRect();
-    if (modalRect.bottom > window.innerHeight) {
-        modal.style.top = `${buttonRect.top - modalRect.height}px`;
-    }
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
-}
-
-document.querySelectorAll('.modal .close').forEach(element => {
-    element.onclick = function() {
-        closeModal(this.closest('.modal').id);
+    const addToCart = (productId) => {
+        const newCart = [...cart];
+        const product = newCart.find((item) => item.id === productId);
+        if (product) {
+            product.quantity += 1;
+        } else {
+            const productData = { id: productId, name: `Product ${productId}`, price: 20.0, quantity: 1 };
+            newCart.push(productData);
+        }
+        setCart(newCart);
     };
-});
 
-document.addEventListener('click', function(event) {
-   if (!event.target.closest('.modal') && !event.target.closest('.product button')) {
-        document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
-    }
-});
+    const removeFromCart = (index) => {
+        const newCart = cart.filter((_, i) => i !== index);
+        setCart(newCart);
+    };
 
-loadCart();
+    const clearCart = () => setCart([]);
 
-document.addEventListener("DOMContentLoaded", function() {
-    showSlides();
-});
+    const products = [
+        { id: 1, name: 'T-Shirt', price: 20.0 },
+        { id: 2, name: 'Mug', price: 15.0 },
+        { id: 3, name: 'Poster', price: 10.0 }
+    ];
 
-function book() {
-    window.location.href = 'book.html';
-}
+    return (
+        <div>
+            <Slideshow />
+            <section className="products">
+                <h2>Merchandise</h2>
+                {products.map((product) => (
+                    <Product key={product.id} product={product} addToCart={addToCart} />
+                ))}
+            </section>
+            <Cart cartItems={cart} removeFromCart={removeFromCart} clearCart={clearCart} />
+        </div>
+    );
+};
+
+export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
