@@ -285,6 +285,22 @@ span {
     background-attachment: fixed;
     background-repeat: no-repeat;
  }
+ .hidden {
+    display: none;
+}
+#cart-section {
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 300px;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+}
+
  /* Large screens */
 @media (min-width: 1024px) {
     body {
