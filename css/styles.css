@@ -280,7 +280,7 @@ span {
  }
  #book {
     background-image: url("../images/book.jpg");
-    background-size: cover;
+    background-size: fill-available;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
