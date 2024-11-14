@@ -31,14 +31,14 @@ function addToCart(productId, event) {
     }
 }
 
-function addProductToCart(productId, name, price, size, posterId) {
+function addProductToCart(productId, name, price, size) {
     const uniqueKey = `${productId}-${size || 'default'}`;
     const existingProduct = cart.find(item => item.uniqueKey === uniqueKey);
 
     if (existingProduct) {
         existingProduct.quantity += 1;
     } else {
-        cart.push({ id: productId, name, price, size, posterId, quantity: 1, uniqueKey });
+        cart.push({ id: productId, name, price, size, quantity: 1, uniqueKey });
     }
 
     saveCart();
@@ -48,16 +48,15 @@ function addProductToCart(productId, name, price, size, posterId) {
 function selectSize(size) {
     const product = document.querySelector('.product[data-id="1"]');
     const productName = `${product.querySelector('h3').innerText} - Size: ${size}`;
-    const productPrice = product.querySelector('p').innerText;
+    const productPrice = parseFloat(product.querySelector('p').innerText.replace('£', ''));
     addProductToCart(1, productName, productPrice, size);
     closeModal('sizeModal');
 }
 
-
 function selectPoster(posterId) {
     const product = document.querySelector('.product[data-id="4"]');
     const productName = `${product.querySelector('h3').innerText} - Poster ${posterId}`;
-    const productPrice = product.querySelector('p').innerText;
+    const productPrice = parseFloat(product.querySelector('p').innerText.replace('£', ''));
     addProductToCart(4, productName, productPrice, posterId);
     closeModal('posterModal');
 }
@@ -68,7 +67,7 @@ function updateCart() {
     cartItems.innerHTML = '';
     cart.forEach((item, index) => {
         const cartItem = document.createElement('div');
-        cartItem.innerText = `${item.name} - ${item.price} (x${item.quantity}) `;
+        cartItem.innerText = `${item.name} - £${item.price.toFixed(2)} (x${item.quantity}) `;
         const removeButton = document.createElement('button');
         removeButton.innerText = 'Remove';
         removeButton.onclick = () => removeFromCart(index);
@@ -76,6 +75,7 @@ function updateCart() {
         cartItems.appendChild(cartItem);
     });
     cartTotal.innerText = `Total: £${cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}`;
+    updateCartCount();
 }
 
 function removeFromCart(index) {
@@ -92,6 +92,15 @@ function clearCart() {
 
 function purchase() {
     window.location.href = 'payment_information.html';
+}
+
+function toggleCart() {
+    const cartSection = document.getElementById('cart-section');
+    cartSection.classList.toggle('hidden');
+}
+
+function updateCartCount() {
+    document.getElementById('cart-count').innerText = cart.reduce((count, item) => count + item.quantity, 0);
 }
 
 function showSlides() {
@@ -165,42 +174,7 @@ document.addEventListener('click', function(event) {
     }
 });
 
-loadCart();
-
 document.addEventListener("DOMContentLoaded", function() {
     showSlides();
+    loadCart();
 });
-
-function book() {
-    window.location.href = 'book.html';
-}
-let cartCount = 0;
-
-function toggleCart() {
-    const cartSection = document.getElementById('cart-section');
-    cartSection.classList.toggle('hidden');
-}
-
-function updateCartCount() {
-    document.getElementById('cart-count').innerText = cart.reduce((count, item) => count + item.quantity, 0);
-}
-
-function updateCart() {
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    cartItems.innerHTML = '';
-    cart.forEach((item, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.innerText = `${item.name} - £${item.price.toFixed(2)} (x${item.quantity}) `;
-        const removeButton = document.createElement('button');
-        removeButton.innerText = 'Remove';
-        removeButton.onclick = () => removeFromCart(index);
-        cartItem.appendChild(removeButton);
-        cartItems.appendChild(cartItem);
-    });
-    cartTotal.innerText = `Total: £${cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}`;
-    updateCartCount();
-}
-
-loadCart();
-
