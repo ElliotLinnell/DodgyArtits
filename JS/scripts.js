@@ -3,6 +3,12 @@ let slideIndex = 0;
 let slides = document.getElementsByClassName("slides");
 let slideTimeout;
 
+document.addEventListener("DOMContentLoaded", function() {
+    loadCart();
+    showSlides();
+    updateCartCount();
+});
+
 function loadCart() {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
@@ -18,20 +24,20 @@ function saveCart() {
 function addToCart(productId, event) {
     const button = event.target;
     const buttonRect = button.getBoundingClientRect();
-    
+    const product = document.querySelector(`.product[data-id="${productId}"]`);
+    const productName = product.querySelector('h3').innerText;
+    const productPrice = parseFloat(product.querySelector('p').innerText.replace('£', ''));
+
     if (productId === 1) {
         openModal('sizeModal', buttonRect);
-    } else if (productId === 4) {
+    } else if (productId === 3) {
         openModal('posterModal', buttonRect);
     } else {
-        const product = document.querySelector(`.product[data-id="${productId}"]`);
-        const productName = product.querySelector('h3').innerText;
-        const productPrice = parseFloat(product.querySelector('p').innerText.replace('£', ''));
         addProductToCart(productId, productName, productPrice, null);
     }
 }
 
-function addProductToCart(productId, name, price, size) {
+function addProductToCart(productId, name, price, size = null) {
     const uniqueKey = `${productId}-${size || 'default'}`;
     const existingProduct = cart.find(item => item.uniqueKey === uniqueKey);
 
@@ -54,10 +60,10 @@ function selectSize(size) {
 }
 
 function selectPoster(posterId) {
-    const product = document.querySelector('.product[data-id="4"]');
+    const product = document.querySelector('.product[data-id="3"]');
     const productName = `${product.querySelector('h3').innerText} - Poster ${posterId}`;
     const productPrice = parseFloat(product.querySelector('p').innerText.replace('£', ''));
-    addProductToCart(4, productName, productPrice, posterId);
+    addProductToCart(3, productName, productPrice, posterId);
     closeModal('posterModal');
 }
 
@@ -65,6 +71,8 @@ function updateCart() {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     cartItems.innerHTML = '';
+    let total = 0;
+
     cart.forEach((item, index) => {
         const cartItem = document.createElement('div');
         cartItem.innerText = `${item.name} - £${item.price.toFixed(2)} (x${item.quantity}) `;
@@ -73,8 +81,10 @@ function updateCart() {
         removeButton.onclick = () => removeFromCart(index);
         cartItem.appendChild(removeButton);
         cartItems.appendChild(cartItem);
+        total += item.price * item.quantity;
     });
-    cartTotal.innerText = `Total: £${cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}`;
+
+    cartTotal.innerText = `Total: £${total.toFixed(2)}`;
     updateCartCount();
 }
 
@@ -114,14 +124,11 @@ function showSlides() {
     }
     
     slides[slideIndex - 1].style.display = "block";
-    
     slideTimeout = setTimeout(showSlides, 2000);
-    autoplay="true";
 }
 
 function plusSlides(n) {
     slideIndex += n;
-
     if (slideIndex > slides.length) { 
         slideIndex = 1; 
     }
@@ -130,9 +137,7 @@ function plusSlides(n) {
     }
 
     clearTimeout(slideTimeout);
-
     showCurrentSlide();
-
     slideTimeout = setTimeout(showSlides, 2000);
 }
 
@@ -169,12 +174,7 @@ document.querySelectorAll('.modal .close').forEach(element => {
 });
 
 document.addEventListener('click', function(event) {
-   if (!event.target.closest('.modal') && !event.target.closest('.product button')) {
+    if (!event.target.closest('.modal') && !event.target.closest('.product button')) {
         document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
     }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    showSlides();
-    loadCart();
 });
