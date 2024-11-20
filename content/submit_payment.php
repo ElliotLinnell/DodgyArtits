@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     Your Company
     ";
 
-    $headers = "From: no-reply@yourdomain.com\r\n";
-    $headers .= "Reply-To: support@yourdomain.com\r\n";
+    $headers = "From: no-reply@dodgyartists.co.uk\r\n";
+    $headers .= "Reply-To: support@dodgyartists.co.uk\r\n";
 
     if (mail($email, $subject, $message, $headers)) {
         
