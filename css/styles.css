@@ -300,6 +300,15 @@ span {
     overflow-y: auto;
     box-shadow: -2px 0 5px rgba(0,0,0,0.5);
 }
+#cart-section h2 {
+    margin-top: 0;
+}
+#table {
+    width: 100%;
+    border-collapse: collapse;
+    list-style: table;
+    table-layout: auto;
+}
 
  /* Large screens */
 @media (min-width: 1024px) {
