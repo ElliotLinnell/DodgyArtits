@@ -304,6 +304,31 @@ span {
     margin-top: 0;
 }
 #table {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    table th, table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #3c3c3c;
+        color: #ffffff;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+        background-color: #ddd;
+    }
     width: 100%;
     border-collapse: collapse;
     list-style: table;
@@ -452,6 +477,75 @@ span {
     }
     nav {
         flex-flow: column;
+    }
+    header {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 40px;
+    }
+    nav a {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+    section {
+        padding: 10px;
+    }
+    .container {
+        padding: 20px 0;
+    }
+    footer {
+        padding: 5px;
+        font-size: 12px;
+    }
+    .content {
+        padding: 1rem;
+        font-size: medium;
+    }
+    .products, .cart {
+        margin: 1em auto;
+        padding: 10px;
+    }
+    .product {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    button {
+        padding: 0.5em;
+        font-size: 14px;
+    }
+    li {
+        padding: 5px;
+        margin: 5px;
+    }
+    .modal {
+        padding: 10px;
+    }
+    .slideshow-container {
+        margin: 20px auto;
+    }
+    .prev, .next {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .tour {
+        font-size: large;
+    }
+    .music {
+        font-size: medium;
+    }
+    .music-list {
+        font-size: medium;
+    }
+    #cart-section {
+        padding: 10px;
+        max-width: 100%;
+    }
+    #cart-section h2 {
+        font-size: 14px;
+    }
+    #table {
+        font-size: 14px;
     }
 }
 
