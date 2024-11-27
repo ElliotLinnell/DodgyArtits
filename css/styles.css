@@ -305,6 +305,7 @@ span {
 }
 table {
     table {
+        border-collapse: collapse;
         align-content: center;
         width: 100%;
         margin: 20px 0;
